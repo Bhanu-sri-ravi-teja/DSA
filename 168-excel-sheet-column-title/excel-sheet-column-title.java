@@ -1,14 +1,16 @@
 class Solution {
     public String convertToTitle(int columnNumber) {
-        char[] alphabets = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-        String result = "";
-        while(columnNumber > 26){
+        StringBuilder result = new StringBuilder();
+
+        while (columnNumber > 0) {
             columnNumber--;
-            int lastLetter = columnNumber % 26;
-            result = alphabets[lastLetter] + result;
+
+            int rem = columnNumber % 26;
+            result.append((char)('A' + rem));
+
             columnNumber = columnNumber / 26;
         }
-        result = alphabets[columnNumber-1] + result;
-        return result;
+
+        return result.reverse().toString();
     }
 }
